@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// Concept: useState
+import React, { useState } from 'react';
+import { StyleSheet, StatusBar } from 'react-native';
+// Concept: SafeArea View
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import PokemonListScreen from './src/screens/PokemonListScreen';
+import PokemonDetailScreen from './src/screens/PokemonDetailScreen';
 
 export default function App() {
+  const [selectedPokemonId, setSelectedPokemonId] = useState(null);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      {/* Concept: SafeArea View */}
+      <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="dark-content" backgroundColor="#f5f5f5" />
+        
+        {selectedPokemonId ? (
+          <PokemonDetailScreen 
+            pokemonId={selectedPokemonId} 
+            onBack={() => setSelectedPokemonId(null)} 
+          />
+        ) : (
+          <PokemonListScreen 
+            onSelectPokemon={setSelectedPokemonId} 
+          />
+        )}
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
+// Concept: StyleSheet
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#f5f5f5',
   },
 });
