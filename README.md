@@ -22,11 +22,11 @@ Responsabilidad de cada archivo
 `src/screens/PokemonListScreen.js`: Maneja la interfaz de la pantalla principal. Controla el estado visual de la `FlatList`, el scroll infinito (paginación) y la barra de búsqueda, mostrando los distintos estados al usuario (cargando, error, sin resultados, éxito).
 `src/screens/PokemonDetailScreen.js`: Renderiza la ficha técnica de un Pokémon específico. Recibe los datos crudos, realiza las transformaciones matemáticas requeridas (conversión a metros/kilogramos, cálculo del porcentaje de las estadísticas base) y aplica los estilos según los tipos.
 
-## 🏗️ Justificación de la Arquitectura
+## Justificación de la Arquitectura
 
-Nuestra arquitectura se basa en el principio de **Separación de Responsabilidades**. 
+la arquitectura se basa en el principio de **Separación de Responsabilidades**. 
 
-Decidimos extraer toda la lógica de consumo de la API REST hacia el archivo `pokeApi.js` para cumplir con la regla de no mezclar llamadas de red con los estilos y el JSX de los componentes. 
+Decidi extraer toda la lógica de consumo de la API REST hacia el archivo `pokeApi.js` para cumplir con la regla de no mezclar llamadas de red con los estilos y el JSX de los componentes. 
 
 De esta manera:
 1. **Mantenibilidad:** Si la PokéAPI cambia sus URLs o su estructura, solo debemos modificar un único archivo (`pokeApi.js`) sin tocar el código de la interfaz.
